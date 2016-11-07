@@ -13,25 +13,16 @@
 	 buyItems.quantity = "";
 	 buyItems.list = ShoppingListCheckOffService.getItems();
 	 buyItems.addItem = function(itemName,itemQuantity){
-		 try{
-		 ShoppingListCheckOffService.addItem(itemName,itemQuantity);
-		 }
-		 catch(error){
-			 buyItems.errorMessage = error.message;
-		 }
+	 ShoppingListCheckOffService.addItem(itemName,itemQuantity);
+
 	 }
  }
 
  AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
  function AlreadyBoughtController(ShoppingListCheckOffService){
 	 var boughtItems = this;
-   try{
-	    boughtItems.list = ShoppingListCheckOffService.getBoughtItems();
-    }
-    catch(error){
-      boughtItems.error = error.message;
-    }
 
+	    boughtItems.list = ShoppingListCheckOffService.getBoughtItems();
  }
 
  function ShoppingListCheckOffService(){
@@ -64,7 +55,6 @@
 
 	 service.addItem = function(itemName,itemQuantity){
 
-		 if(toBuyList.length>=1){
 		toBuyList.splice(itemName,1);
 
 		var myList = {
@@ -72,11 +62,6 @@
       quantity : itemQuantity
 		};
 		 boughtList.push(myList);
-
-     if(toBuyList.length<1){
-       throw new Error("Everything is bought");
-     }
-		 }
 	 }
 
 	 service.getBoughtItems = function(){

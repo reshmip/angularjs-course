@@ -39,7 +39,7 @@
 	   <span class="glyphicon glyphicon-ok"></span> Bought</button></li>
 
      </ul>
-     <div class="emptyMessage" ng-if='buyItems.errorMessage'>{{buyItems.errorMessage}}</div>
+     <div class="emptyMessage" ng-if='buyItems.list.length==0'>Everything is bought</div>
     </div>
 
     <!-- Already Bought List -->
@@ -48,7 +48,7 @@
      <ul>
        <li ng-repeat='item in boughtItems.list'>Bought {{item.quantity}} {{item.name}}</li>
      </ul>
-     <div class="emptyMessage" ng-if='boughtItems.error'>{{boughtItems.error}}.</div>
+     <div class="emptyMessage" ng-if='boughtItems.list.length==0'>Nothing is bought</div>
     </div>
   </div>
 </div>
